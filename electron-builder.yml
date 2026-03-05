@@ -1,0 +1,53 @@
+appId: com.localkeys.app
+productName: 'LocalKeys'
+directories:
+  buildResources: resources
+  output: dist
+files:
+  - "**/*"
+  - "!README.md"
+  - "!LICENSE"
+asarUnpack:
+  - resources/**
+asar: true
+extraResources:
+  - from: resources/icons/icon.png
+    to: icons/icon.png
+  - from: resources/icons/icon.ico
+    to: icons/icon.ico
+  - from: resources/icons/icon.icns
+    to: icons/icon.icns
+win:
+  icon: resources/icons/icon.png
+  target:
+    - nsis
+    - portable
+    - msi
+msi:
+  artifactName: localkeys-${version}.${ext}
+  createDesktopShortcut: always
+  shortcutName: ${productName}
+  oneClick: false
+  perMachine: true
+nsis:
+  artifactName: localkeys-${version}.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: uninstall
+  createDesktopShortcut: always
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true
+  differentialPackage: false
+  installerIcon: resources/icons/icon.ico
+  uninstallerIcon: resources/icons/icon.ico
+  installerHeaderIcon: resources/icons/icon.ico
+  license: resources/license.txt
+portable:
+  artifactName: localkeys-${version}-portable.${ext}
+npmRebuild: false
+publish:
+  provider: github
+  owner: Adivise
+  repo: LocalKeys
+  releaseType: release
+  private: false
