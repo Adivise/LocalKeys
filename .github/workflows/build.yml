@@ -12,6 +12,9 @@ concurrency:
 jobs:
   release:
     runs-on: windows-latest
+    permissions:
+      contents: write
+      
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN || github.token }}
       ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: true
