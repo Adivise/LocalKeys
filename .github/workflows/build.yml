@@ -39,5 +39,8 @@ jobs:
       - name: Install dependencies (fast, deterministic)
         run: npm ci --no-audit --no-fund
 
+      - name: Build project
+        run: npm run build
+
       - name: Build & publish (Windows)
         run: npx electron-builder --win --publish always
